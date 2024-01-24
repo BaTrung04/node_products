@@ -1,55 +1,48 @@
 extends ../../layouts/default.pug  
 
 block main 
-  h1 Danh sach san pham
+  h1 Danh sách sản phẩm 
 
-  table.table.table-hover.table-sm 
-    thead 
-      tr 
-        th STT  
-        th Hình ảnh  
-        th Tiêu đề  
-        th Giá  
-        th Trạng thái  
-        th Hành động 
+  .card.mb-3 
+    .card-header Bộ lọc và tìm kiếm 
+      .card-body 
+        each item in filterStatus
+         button(class=`btn btn-sm ml-1 btn-outline-success ${item.class}` button-status=item.status) #{item.name}
 
-    tbody 
-      each item, index in products
-        tr 
-          td #{index + 1}
-          td 
-            img(
-              src=item.thumbnail
-              alt=item.title
-              width="100px"
-              height="auto"
-            ) 
-          td #{item.title}
-          td #{item.price}$
-          td  
-            if(item.status == "active")
-              a(href="#" class="badge badge-success") Hoat dong
-            else
-              a(href="#" class="badge badge-danger") dừng hoạt động
+  .card.mb-3 
+      .card-header Danh sách sản phẩm 
+        .card-body
+          table.table.table-hover.table-sm 
+            thead 
+              tr 
+                th STT  
+                th Hình ảnh  
+                th Tiêu đề  
+                th Giá  
+                th Trạng thái  
+                th Hành động 
 
-          td 
-            button(class="btn btn-warning btn-sm") Sua
-            button(class="btn btn-danger btn-sm ml-1") Xoa
+            tbody 
+              each item, index in products
+                tr 
+                  td #{index + 1}
+                  td 
+                    img(
+                      src=item.thumbnail
+                      alt=item.title
+                      width="100px"
+                      height="auto"
+                    ) 
+                  td #{item.title}
+                  td #{item.price}$
+                  td  
+                    if(item.status == "active")
+                      a(href="#" class="badge badge-success") Hoat dong
+                    else
+                      a(href="#" class="badge badge-danger") dừng hoạt động
+
+                  td 
+                    button(class="btn btn-warning btn-sm") Sua
+                    button(class="btn btn-danger btn-sm ml-1") Xoa
       
-      //- tr 
-      //-   td 2
-      //-   td 
-      //-     img(
-      //-       src="https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
-      //-       alt="San pham 1"
-      //-       width="100px"
-      //-       height="auto"
-      //-     ) 
-      //-   td San pham 2 
-      //-   td 100$ 
-      //-   td  
-      //-     a(href="#" class="badge badge-danger") dừng hoạt động
-      //-   td 
-      //-     button(class="btn btn-warning btn-sm") Sua
-      //-     button(class="btn btn-danger btn-sm ml-1") Xoa
           
