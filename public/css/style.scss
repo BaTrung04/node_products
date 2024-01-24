@@ -2,6 +2,10 @@ a {
   text-decoration: none !important;
 }
 .header {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-bottom: 1px solid #ddd;
   padding: 20xp 0;
   .inner-logo {
